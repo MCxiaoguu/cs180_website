@@ -14,13 +14,10 @@ const Project1: React.FC<Project1Props> = ({ isDark, toggleTheme }) => {
     <BaseProject 
       isDark={isDark} 
       toggleTheme={toggleTheme} 
-      title={project.title}
+      title={project.title + " - " + project.description}
     >
       {/* Project Introduction */}
       <div className="mb-12">
-        <p className="text-xl text-[#666] dark:text-[#999] mb-6">
-          {project.description}
-        </p>
         {/* Demo/GitHub*/}
         {/*   
         <div className="flex gap-4">
@@ -170,7 +167,7 @@ const Project1: React.FC<Project1Props> = ({ isDark, toggleTheme }) => {
               <h4 className="font-medium text-[#222] dark:text-[#e5e5e5] mb-2">Acknowledgement</h4>
               <p className="text-sm text-[#666] dark:text-[#999]">
                 Huge thanks to my friend <span className="font-bold">Zhengxian Jin</span>, 
-                who helped me complete this project using his excellent photography skills.
+                who helped me complete the first and third part of the project using his excellent photography skills.
                 Without him, this project would not be possible.
             </p>
             </div>

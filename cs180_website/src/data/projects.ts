@@ -1,3 +1,5 @@
+import { generateProject1Thumbnail } from '../utils/thumbnailGenerator'
+
 // Shared project data for both Home and Project components
 export interface ImageSet {
   name: string
@@ -19,12 +21,26 @@ export interface ProjectData {
   demoUrl: string
   githubUrl: string
   features: string[]
+  thumbnailType?: 'single' | 'composite'
 }
 
 // Helper function to get image URL that works in both dev and production
 export const getImageUrl = (folder: string, filename: string): string => {
   // In Vite, assets in public folder are served from root
   return `/images/${folder}/${filename}`
+}
+
+// Generate composite thumbnail for project
+export const getProjectThumbnail = async (project: ProjectData): Promise<string> => {
+  if (project.thumbnailType === 'composite' && project.id === '1') {
+    try {
+      return await generateProject1Thumbnail()
+    } catch (error) {
+      console.warn('Failed to generate composite thumbnail, falling back to single image:', error)
+      return getImageUrl(project.folder, project.image)
+    }
+  }
+  return getImageUrl(project.folder, project.image)
 }
 
 export const projectsData: Record<string, ProjectData> = {
@@ -37,8 +53,9 @@ export const projectsData: Record<string, ProjectData> = {
     and camera calibration techniques. Through practical experiments with different focal lengths and 
     camera settings, we learn how to manipulate these parameters to achieve desired visual effects.`,
     folder: 'project1',
-    image: '9mm.JPG',
+    image: '9mm.JPG', // fallback image
     images: ['9mm.JPG', '24mm.JPG', '28mm.JPG', '50mm.JPG', '70mm.JPG', '135mm.JPG', '800mm.JPG'],
+    thumbnailType: 'composite',
     imageSets: [
       {
         name: 'focalLength',

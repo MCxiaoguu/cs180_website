@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { projectsArray, getImageUrl } from '../data/projects'
+import { projectsArray } from '../data/projects'
 import Navigation from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import { PageTransition } from '../components/PageTransition'
+import ProjectThumbnail from '../components/ProjectThumbnail'
 
 interface HomeProps {
   isDark: boolean
@@ -29,15 +30,9 @@ const Home: React.FC<HomeProps> = ({ isDark, toggleTheme }) => {
           <li key={project.id} className="list-none text-center flex-1">
             <Link to={`/${project.id}`} className="block group">
               <div className="relative overflow-hidden">
-                <img
-                  src={getImageUrl(project.folder, project.image)}
-                  alt={`${project.title} preview`}
-                  className="h-[400px] md:h-[400px] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  onError={(e) => {
-                    // Fallback placeholder image if the actual image doesn't exist
-                    const target = e.target as HTMLImageElement
-                    target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmM2YzIi8+PHRleHQgeD0iNTAlIiB5PSI0NSUiIGZvbnQtZmFtaWx5PSJJbnRlciIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzY2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPnt7UFJPSKBDVF9OQU1FfX08L3RleHQ+PHRleHQgeD0iNTAlIiB5PSI1NSUiIGZvbnQtZmFtaWx5PSJJbnRlciIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNsaWNrIHRvIHZpZXcgZGV0YWlsczwvdGV4dD48L3N2Zz4='.replace('{{PROJECT_NAME}}', project.title)
-                  }}
+                <ProjectThumbnail
+                  project={project}
+                  className="h-[400px] md:h-[400px] w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
                 
                 {/* Overlay with project info */}
@@ -62,6 +57,16 @@ const Home: React.FC<HomeProps> = ({ isDark, toggleTheme }) => {
                     </div>
                   </div>
                 </div>
+              </div>
+              
+              {/* Project Title Below Thumbnail */}
+              <div className="mt-4 text-left">
+                <h3 className="text-lg font-medium text-[#222] dark:text-[#e5e5e5] mb-1">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-[#666] dark:text-[#999] leading-relaxed">
+                  {project.description}
+                </p>
               </div>
             </Link>
           </li>
