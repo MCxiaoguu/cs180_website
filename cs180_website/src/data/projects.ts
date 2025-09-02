@@ -1,4 +1,11 @@
 // Shared project data for both Home and Project components
+export interface ImageSet {
+  name: string
+  description: string
+  images: string[]
+  focalLengths: string[]
+}
+
 export interface ProjectData {
   id: string
   title: string
@@ -7,6 +14,7 @@ export interface ProjectData {
   folder: string
   image: string
   images: string[]
+  imageSets: ImageSet[]
   technologies: string[]
   demoUrl: string
   githubUrl: string
@@ -31,6 +39,20 @@ export const projectsData: Record<string, ProjectData> = {
     folder: 'project1',
     image: '9mm.JPG',
     images: ['9mm.JPG', '24mm.JPG', '28mm.JPG', '50mm.JPG', '70mm.JPG', '135mm.JPG', '800mm.JPG'],
+    imageSets: [
+      {
+        name: 'focalLength',
+        description: 'The Wrong Way vs. The Right Way',
+        images: ['9mm.JPG', '24mm.JPG', '28mm.JPG', '50mm.JPG', '70mm.JPG', '135mm.JPG', '800mm.JPG'],
+        focalLengths: ['9mm', '24mm', '28mm', '50mm', '70mm', '135mm', '800mm']
+      },
+      {
+        name: 'architecture',
+        description: 'Architectural Perspective Compression',
+        images: ['arch_14mm.jpeg', 'arch_24mm.jpeg', 'arch_48mm.jpeg', 'arch_77mm.jpeg'],
+        focalLengths: ['14mm', '24mm', '48mm', '77mm']
+      }
+    ],
     technologies: ['FOV', 'Perspective', 'Depth of Field', 'Camera Calibration', '3D Reconstruction'],
     demoUrl: 'https://example.com',
     githubUrl: 'https://github.com/yourusername/project1',
