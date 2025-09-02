@@ -166,7 +166,7 @@ const Project1: React.FC<Project1Props> = ({ isDark, toggleTheme }) => {
             <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-none">
               <h4 className="font-medium text-[#222] dark:text-[#e5e5e5] mb-2">Acknowledgement</h4>
               <p className="text-sm text-[#666] dark:text-[#999]">
-                Huge thanks to my friend <span className="font-bold">Zhengxian Jin</span>, 
+                Huge thanks to my friend <a href = "https://www.instagram.com/zhengxian_jin_star" className="font-bold">Zhengxian Jin</a>, 
                 who helped me complete the first and third part of the project using his excellent photography skills.
                 Without him, this project would not be possible.
             </p>

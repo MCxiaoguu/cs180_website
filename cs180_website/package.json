@@ -1,7 +1,7 @@
 {
   "name": "cs180_website",
   "version": "0.1.0",
-  "homepage": "https://mcxiaoguu.github.io/",
+  "homepage": "http://cs180.hanyanggu.com",
   "private": true,
   "type": "module",
   "dependencies": {
@@ -20,7 +20,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "npm run build && gh-pages -d dist",
+    "deploy": "npm run build && gh-pages -d dist --cname cs180.hanyanggu.com",
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
