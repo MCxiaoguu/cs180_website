@@ -70,7 +70,7 @@ export const projectsData: Record<string, ProjectData> = {
         focalLengths: ['14mm', '24mm', '48mm', '77mm']
       }
     ],
-    technologies: ['FOV', 'Perspective', 'Depth of Field', 'Camera Calibration', '3D Reconstruction'],
+    technologies: ['FOV', 'Perspective', 'Depth of Field', 'Projection'],
     demoUrl: 'https://example.com',
     githubUrl: 'https://github.com/yourusername/project1',
     features: [
